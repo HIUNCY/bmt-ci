@@ -14,7 +14,7 @@
 			<?= date("d-M-Y", strtotime($this->input->post('tgl_2'))) ?>
 		<p>_________________________________________________________________________________________</p>
 
-		<table border="1" cellspacing="0">
+		<table border="1" cellspacing="0" class="table table-bordered table-striped">
 			<thead>
 				<tr>
 					<th>No.</th>
