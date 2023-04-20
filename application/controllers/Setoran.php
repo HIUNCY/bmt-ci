@@ -6,8 +6,8 @@ class Setoran extends CI_Controller
 	public function index()
 	{
 		$data = [
-			'setoran' => $this->db->query("SELECT SUM(setor) as total  from tb_tabungan where jenis='ST'")->row_array(),
-			'dataSetor' => $this->db->query("select s.nis, s.nama_siswa, t.id_tabungan, t.setor, t.tgl, t.petugas from tb_siswa s join tb_tabungan t on s.nis=t.nis where jenis ='ST' order by tgl desc, id_tabungan desc"),
+			'setoran' => $this->Setoran_model->getSetoran(),
+			'dataSetor' => $this->Setoran_model->getDataSetor(),
 		];
 
 		$this->load->view('templates/header');
@@ -20,7 +20,7 @@ class Setoran extends CI_Controller
 	public function tambahSetoran()
 	{
 		$data = [
-			'dataSiswa' => $this->db->get_where('tb_siswa', ['status' => 'Aktif'])
+			'dataSiswa' => $this->Setoran_model->getSiswa(),
 		];
 
 		$this->load->view('templates/header');
@@ -41,7 +41,7 @@ class Setoran extends CI_Controller
 			'petugas' => $this->session->userdata('nama')
 		];
 
-		$this->db->insert('tb_tabungan', $data);
+		$this->Setoran_model->insertSetoran($data);
 		redirect('admin/setoran');
 	}
 
@@ -49,8 +49,8 @@ class Setoran extends CI_Controller
 	{
 		$id = $this->uri->segment(3);
 		$data = [
-			'setoran' => $this->db->query("select s.nis, s.nama_siswa, t.id_tabungan, t.setor, t.tgl, t.petugas from tb_siswa s join tb_tabungan t on s.nis=t.nis where jenis ='ST' and id_tabungan='" . $id . "'")->row_array(),
-			'dataSiswa' => $this->db->get('tb_siswa')
+			'setoran' => $this->Setoran_model->getDataSetoran($id),
+			'dataSiswa' => $this->Setoran_model->getDataSiswa(),
 		];
 
 		$this->load->view('templates/header');
@@ -62,6 +62,7 @@ class Setoran extends CI_Controller
 
 	public function updateSetoran()
 	{
+		$id = $this->input->post('id_tabungan');
 		$data = [
 			'nis' => $this->input->post('nis'),
 			'setor' => preg_replace("/[^0-9]/", "", $this->input->post('setor')),
@@ -69,8 +70,7 @@ class Setoran extends CI_Controller
 			'petugas' => $this->session->userdata('nama')
 		];
 
-		$this->db->where('id_tabungan', $this->input->post('id_tabungan'));
-		$this->db->update('tb_tabungan', $data);
+		$this->Setoran_model->updateSetoran($id, $data);
 		redirect('admin/setoran');
 	}
 }

@@ -6,7 +6,7 @@ class Profil extends CI_Controller
 	public function index()
 	{
 		$data = [
-			'dataSekolah' => $this->db->get("tb_profil")->row_array()
+			'dataSekolah' => $this->Profil_model->getProfil(),
 		];
 
 		$this->load->view('templates/header');
@@ -19,7 +19,7 @@ class Profil extends CI_Controller
 	public function editProfil()
 	{
 		$data = [
-			'profil' => $this->db->get('tb_profil')->row_array(),
+			'profil' => $this->Profil_model->getProfil(),
 		];
 
 
@@ -32,14 +32,14 @@ class Profil extends CI_Controller
 
 	public function updateProfil()
 	{
+		$id = $this->input->post('id_profil');
 		$data = [
 			'nama_sekolah' => $this->input->post('nama_sekolah'),
 			'alamat' => $this->input->post('alamat'),
 			'akreditasi' => $this->input->post('akreditasi'),
 		];
 
-		$this->db->where('id_profil', $this->input->post('id_profil'));
-		$this->db->update('tb_profil', $data);
+		$this->Profil_model->updateProfil($id, $data);
 		redirect('admin/profil');
 	}
 }

@@ -27,7 +27,7 @@
 			<tbody>
 				<?php
 				$i = 1;
-				foreach ($dataLaporan->result_array() as $laporan) {
+				foreach ($dataLaporan as $laporan) {
 				?>
 					<tr>
 						<td>

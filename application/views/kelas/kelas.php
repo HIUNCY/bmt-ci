@@ -42,7 +42,7 @@
 
 						<?php
 						$i = 1;
-						foreach ($dataKelas->result_array() as $kelas) {
+						foreach ($dataKelas as $kelas) {
 						?>
 
 							<tr>

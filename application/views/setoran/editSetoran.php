@@ -43,7 +43,7 @@
 							<select name="nis" id="nis" class="form-control select2" style="width: 100%; ">
 								<option selected="">-- Pilih --</option>
 								<?php
-								foreach ($dataSiswa->result_array() as $siswa) {
+								foreach ($dataSiswa as $siswa) {
 								?>
 									<option value="<?= $siswa['nis'] ?>" <?= $setoran['nis'] == $siswa['nis'] ? "selected" : null ?>>
 										<?= $siswa['nama_siswa'] ?>

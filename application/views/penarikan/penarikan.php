@@ -59,7 +59,7 @@
 					<tbody>
 						<?php
 						$i = 1;
-						foreach ($dataTarik->result_array() as $tarik) {
+						foreach ($dataTarik as $tarik) {
 						?>
 							<tr>
 								<td>

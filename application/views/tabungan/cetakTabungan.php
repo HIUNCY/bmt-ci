@@ -40,7 +40,7 @@
 
 			<?php
 			$i = 1;
-			foreach ($dataCetak->result_array() as $cetak) {
+			foreach ($dataCetak as $cetak) {
 			?>
 				<tr>
 					<td>

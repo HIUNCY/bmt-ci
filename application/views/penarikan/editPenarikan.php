@@ -43,7 +43,7 @@
 							<select name="nis" id="nis" class="form-control select2" style="width: 100%; ">
 								<option selected="">-- Pilih --</option>
 								<?php
-								foreach ($dataSiswa->result_array() as $siswa) {
+								foreach ($dataSiswa as $siswa) {
 								?>
 									<option value="<?= $siswa['nis'] ?>" <?= $penarikan['nis'] == $siswa['nis'] ? "selected" : null ?>>
 										<?= $siswa['nama_siswa'] ?>
@@ -71,49 +71,9 @@
 			<!-- /.box -->
 </section>
 
-<?php
-
-if (isset($_POST['Ubah'])) {
-
-	//menangkap post tarik
-	$tarik = $_POST['tarik'];
-	//membuang Rp dan Titik
-	$tarik_hasil = preg_replace("/[^0-9]/", "", $tarik);
-
-	$sql_ubah = "UPDATE tb_tabungan SET
-            nis='" . $_POST['nis'] . "',
-            tarik='" . $tarik_hasil . "',
-            tgl='" . $tanggal . "'
-            WHERE id_tabungan='" . $_POST['id_tabungan'] . "'";
-	$query_ubah = mysqli_query($koneksi, $sql_ubah);
-	mysqli_close($koneksi);
-
-	if ($query_ubah) {
-		echo "<script>
-        Swal.fire({title: 'Ubah Data Berhasil',text: '',icon: 'success',confirmButtonText: 'OK'
-        }).then((result) => {
-            if (result.value) {
-                window.location = 'index.php?page=data_tarik';
-            }
-        })</script>";
-	} else {
-		echo "<script>
-        Swal.fire({title: 'Ubah Data Gagal',text: '',icon: 'error',confirmButtonText: 'OK'
-        }).then((result) => {
-            if (result.value) {
-                window.location = 'index.php?page=data_tarik';
-            }
-        })</script>";
-	}
-}
-
-?>
-
 <script type="text/javascript">
 	var tarik = document.getElementById('tarik');
 	tarik.addEventListener('keyup', function(e) {
-		// tambahkan 'Rp.' pada saat form di ketik
-		// gunakan fungsi formattarik() untuk mengubah angka yang di ketik menjadi format angka
 		tarik.value = formattarik(this.value, 'Rp ');
 	});
 

@@ -6,7 +6,7 @@ class Kelas extends CI_Controller
 	public function index()
 	{
 		$data = [
-			'dataKelas' => $this->db->query("SELECT * FROM tb_kelas")
+			'dataKelas' => $this->Kelas_model->getKelas(),
 		];
 
 		$this->load->view('templates/header');
@@ -27,7 +27,8 @@ class Kelas extends CI_Controller
 
 	public function createKelas()
 	{
-		$this->db->insert('tb_kelas', ['kelas' => $this->input->post('kelas')]);
+		$data = ['kelas' => $this->input->post('kelas')];
+		$this->Kelas_model->insertKelas($data);
 		redirect('admin/kelas');
 	}
 
@@ -35,7 +36,7 @@ class Kelas extends CI_Controller
 	{
 		$id = $this->uri->segment(3);
 		$data = [
-			'kelas' => $this->db->get_where('tb_kelas', ['id_kelas' => $id])->row_array()
+			'kelas' => $this->Kelas_model->getDataKelas($id),
 		];
 
 		$this->load->view('templates/header');
@@ -47,19 +48,17 @@ class Kelas extends CI_Controller
 
 	public function updateKelas()
 	{
-		$data = [
-			'id_kelas' => $this->input->post('id_kelas'),
-			'kelas' => $this->input->post('kelas')
-		];
+		$id = $this->input->post('id_kelas');
+		$data = ['kelas' => $this->input->post('kelas')];
 
-		$this->db->replace('tb_kelas', $data);
+		$this->Kelas_model->updateKelas($id, $data);
 		redirect('admin/kelas');
 	}
 
 	public function deleteKelas()
 	{
 		$id = $this->uri->segment(3);
-		$this->db->delete('tb_kelas', ['id_kelas' => $id]);
+		$this->Kelas_model->deleteKelas($id);
 		redirect('admin/kelas');
 	}
 }

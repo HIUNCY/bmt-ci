@@ -66,22 +66,32 @@ $route['siswa'] = 'Dashboard/index';
 /* ROUTES UNTUK SISWA */
 $route['(:any)/siswa'] = 'Siswa/index';
 $route['(:any)/tambah-siswa'] = 'Siswa/tambahSiswa';
+$route['(:any)/createSiswa'] = 'Siswa/createSiswa';
 $route['(:any)/edit-siswa/(:num)'] = 'Siswa/editSiswa';
+$route['(:any)/updateSiswa'] = 'Siswa/updateSiswa';
+$route['(:any)/deleteSiswa/(:num)'] = 'Siswa/deleteSiswa';
 
 /* ROUTES UNTUK KELAS */
 $route['(:any)/kelas'] = 'Kelas/index';
 $route['(:any)/tambah-kelas'] = 'Kelas/tambahKelas';
+$route['(:any)/createKelas'] = 'Kelas/createKelas';
 $route['(:any)/edit-kelas/(:num)'] = 'Kelas/editKelas';
+$route['(:any)/updateKelas'] = 'Kelas/updateKelas';
+$route['(:any)/deleteKelas/(:num)'] = 'Kelas/deleteKelas';
 
 /* ROUTES UNTUK SETORAN */
 $route['(:any)/setoran'] = 'Setoran/index';
 $route['(:any)/tambah-setoran'] = 'Setoran/tambahSetoran';
+$route['(:any)/createSetoran'] = 'Setoran/createSetoran';
 $route['(:any)/edit-setoran/(:num)'] = 'Setoran/editSetoran';
+$route['(:any)/updateSetoran'] = 'Setoran/updateSetoran';
 
 /* ROUTES UNTUK PENARIKAN */
 $route['(:any)/penarikan'] = 'Penarikan/index';
 $route['(:any)/tambah-penarikan'] = 'Penarikan/tambahPenarikan';
+$route['(:any)/createPenarikan'] = 'Penarikan/createPenarikan';
 $route['(:any)/edit-penarikan/(:num)'] = 'Penarikan/editPenarikan';
+$route['(:any)/updatePenarikan'] = 'Penarikan/updatePenarikan';
 
 /* ROUTES UNTUK KAS */
 $route['(:any)/kas'] = 'Kas/index';
@@ -100,8 +110,12 @@ $route['(:any)/cetak-laporan'] = 'Laporan/cetakLaporan';
 /* ROUTES UNTUK PENGGUNA */
 $route['(:any)/pengguna'] = 'Pengguna/index';
 $route['(:any)/tambah-pengguna'] = 'Pengguna/tambahPengguna';
+$route['(:any)/createPengguna'] = 'Pengguna/createPengguna';
+$route['(:any)/updatePengguna'] = 'Pengguna/updatePengguna';
 $route['(:any)/edit-pengguna/(:num)'] = 'Pengguna/editPengguna';
+$route['(:any)/deletePengguna/(:num)'] = 'Pengguna/deletePengguna';
 
 /* ROUTES UNTUK PROFIL */
 $route['(:any)/profil'] = 'Profil/index';
 $route['(:any)/edit-profil'] = 'Profil/editProfil';
+$route['(:any)/updateProfil'] = 'Profil/updateProfil';

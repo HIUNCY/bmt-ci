@@ -59,7 +59,7 @@
 					<tbody>
 						<?php
 						$i = 1;
-						foreach ($dataSetor->result_array() as $setor) {
+						foreach ($dataSetor as $setor) {
 						?>
 							<tr>
 								<td>

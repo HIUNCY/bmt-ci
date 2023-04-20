@@ -6,8 +6,8 @@ class Penarikan extends CI_Controller
 	public function index()
 	{
 		$data = [
-			'penarikan' => $this->db->query("SELECT SUM(tarik) as total  from tb_tabungan where jenis='TR'")->row_array(),
-			'dataTarik' => $this->db->query("select s.nis, s.nama_siswa, t.id_tabungan, t.tarik, t.tgl, t.petugas from tb_siswa s join tb_tabungan t on s.nis=t.nis where jenis ='TR' order by tgl desc, id_tabungan desc"),
+			'penarikan' => $this->Penarikan_model->getPenarikan(),
+			'dataTarik' => $this->Penarikan_model->getDataTarik(),
 		];
 
 		$this->load->view('templates/header');
@@ -20,7 +20,7 @@ class Penarikan extends CI_Controller
 	public function tambahPenarikan()
 	{
 		$data = [
-			'dataSiswa' => $this->db->get_where('tb_siswa', ['status' => 'Aktif'])
+			'dataSiswa' => $this->Penarikan_model->getSiswa(),
 		];
 
 		$this->load->view('templates/header');
@@ -41,7 +41,7 @@ class Penarikan extends CI_Controller
 			'petugas' => $this->session->userdata('nama')
 		];
 
-		$this->db->insert('tb_tabungan', $data);
+		$this->Penarikan_model->insertPenarikan($data);
 		redirect('admin/penarikan');
 	}
 
@@ -49,8 +49,8 @@ class Penarikan extends CI_Controller
 	{
 		$id = $this->uri->segment(3);
 		$data = [
-			'penarikan' => $this->db->query("select s.nis, s.nama_siswa, t.id_tabungan, t.tarik, t.tgl, t.petugas from tb_siswa s join tb_tabungan t on s.nis=t.nis where jenis ='TR' and id_tabungan='" . $id . "'")->row_array(),
-			'dataSiswa' => $this->db->get('tb_siswa')
+			'penarikan' => $this->Penarikan_model->getDataPenarikan($id),
+			'dataSiswa' => $this->Penarikan_model->getDataSiswa(),
 		];
 
 		$this->load->view('templates/header');
@@ -62,6 +62,7 @@ class Penarikan extends CI_Controller
 
 	public function updatePenarikan()
 	{
+		$id = $this->input->post('id_tabungan');
 		$data = [
 			'nis' => $this->input->post('nis'),
 			'tarik' => preg_replace("/[^0-9]/", "", $this->input->post('tarik')),
@@ -69,8 +70,7 @@ class Penarikan extends CI_Controller
 			'petugas' => $this->session->userdata('nama')
 		];
 
-		$this->db->where('id_tabungan', $this->input->post('id_tabungan'));
-		$this->db->update('tb_tabungan', $data);
+		$this->Penarikan_model->updatePenarikan($id, $data);
 		redirect('admin/penarikan');
 	}
 }

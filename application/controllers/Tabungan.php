@@ -6,7 +6,7 @@ class Tabungan extends CI_Controller
 	public function index()
 	{
 		$data = [
-			'dataSiswa' => $this->db->query("select * from tb_siswa where status='Aktif'")
+			'dataSiswa' => $this->Tabungan_model->getDataSiswa(),
 		];
 
 		$this->load->view('templates/header');
@@ -20,9 +20,9 @@ class Tabungan extends CI_Controller
 	{
 		$nis = $this->session->userdata('nis');
 		$data = [
-			'setor' => $this->db->query("SELECT SUM(setor) as Tsetor  from tb_tabungan where jenis='ST' AND nis=$nis")->row_array(),
-			'tarik' => $this->db->query("SELECT SUM(tarik) as Ttarik  from tb_tabungan where jenis='TR' AND nis=$nis")->row_array(),
-			'dataTabungan' => $this->db->query("select s.nis, s.nama_siswa, t.id_tabungan, t.setor, t.tarik, t.tgl, t.petugas from tb_siswa s join tb_tabungan t on s.nis=t.nis where s.nis =$nis order by tgl asc"),
+			'setor' => $this->Tabungan_model->getSetor($nis),
+			'tarik' => $this->Tabungan_model->getTarik($nis),
+			'dataTabungan' => $this->Tabungan_model->getDataTabungan($nis),
 		];
 
 		$this->load->view('templates/header');
@@ -36,9 +36,9 @@ class Tabungan extends CI_Controller
 	{
 		$nis = $this->input->post('nis');
 		$data = [
-			'setor' => $this->db->query("SELECT SUM(setor) as Tsetor  from tb_tabungan where jenis='ST' AND nis=$nis")->row_array(),
-			'tarik' => $this->db->query("SELECT SUM(tarik) as Ttarik  from tb_tabungan where jenis='TR' AND nis=$nis")->row_array(),
-			'dataTabungan' => $this->db->query("select s.nis, s.nama_siswa, t.id_tabungan, t.setor, t.tarik, t.tgl, t.petugas from tb_siswa s join tb_tabungan t on s.nis=t.nis where s.nis =$nis order by tgl asc"),
+			'setor' => $this->Tabungan_model->getSetor($nis),
+			'tarik' => $this->Tabungan_model->getTarik($nis),
+			'dataTabungan' => $this->Tabungan_model->getDataTabungan($nis),
 		];
 		$this->load->view('templates/header');
 		$this->load->view('templates/topbar');
@@ -51,11 +51,11 @@ class Tabungan extends CI_Controller
 	{
 		$nis = $this->uri->segment(3);
 		$data = [
-			'dataSekolah' => $this->db->get('tb_profil')->row_array(),
-			'dataSiswa' => $this->db->get_where('tb_siswa', ['nis' => $this->uri->segment(3)])->row_array(),
-			'dataCetak' => $this->db->query("select s.nis, s.nama_siswa, t.id_tabungan, t.setor, t.tarik, t.tgl, t.petugas from tb_siswa s join tb_tabungan t on s.nis=t.nis where s.nis =$nis order by tgl asc"),
-			'setor' => $this->db->query("SELECT SUM(setor) as Tsetor  from tb_tabungan where jenis='ST' AND nis=$nis")->row_array(),
-			'tarik' => $this->db->query("SELECT SUM(tarik) as Ttarik  from tb_tabungan where jenis='TR' AND nis=$nis")->row_array(),
+			'dataSekolah' => $this->Tabungan_model->getProfil(),
+			'dataSiswa' => $this->Tabungan_model->getDataSiswaCetak($nis),
+			'dataCetak' => $this->Tabungan_model->getDataCetak($nis),
+			'setor' => $this->Tabungan_model->getSetor($nis),
+			'tarik' => $this->Tabungan_model->getTarik($nis),
 		];
 
 		$this->load->view('templates/header');

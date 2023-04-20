@@ -44,7 +44,7 @@
 
 						<?php
 						$i = 1;
-						foreach ($dataPengguna->result_array() as $pengguna) {
+						foreach ($dataPengguna as $pengguna) {
 						?>
 
 							<tr>

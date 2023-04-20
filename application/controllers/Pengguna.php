@@ -6,7 +6,7 @@ class Pengguna extends CI_Controller
 	public function index()
 	{
 		$data = [
-			'dataPengguna' => $this->db->get("tb_pengguna")
+			'dataPengguna' => $this->Pengguna_model->getDataPengguna(),
 		];
 
 		$this->load->view('templates/header');
@@ -34,7 +34,7 @@ class Pengguna extends CI_Controller
 			'level' => $this->input->post('level'),
 		];
 
-		$this->db->insert('tb_pengguna', $data);
+		$this->Pengguna_model->insertPengguna($data);
 		redirect('admin/pengguna');
 	}
 
@@ -42,7 +42,7 @@ class Pengguna extends CI_Controller
 	{
 		$id = $this->uri->segment(3);
 		$data = [
-			'pengguna' => $this->db->get_where('tb_pengguna', ['id_pengguna' => $id])->row_array(),
+			'pengguna' => $this->Pengguna_model->getPengguna($id),
 		];
 
 
@@ -55,22 +55,22 @@ class Pengguna extends CI_Controller
 
 	public function updatePengguna()
 	{
+		$id = $this->input->post('id_pengguna');
 		$data = [
-			'id_pengguna' => $this->input->post('id_pengguna'),
 			'nama_pengguna' => $this->input->post('nama_pengguna'),
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password'),
 			'level' => $this->input->post('level'),
 		];
 
-		$this->db->replace('tb_pengguna', $data);
+		$this->Pengguna_model->updatePengguna($id, $data);
 		redirect('admin/pengguna');
 	}
 
 	public function deletePengguna()
 	{
 		$id = $this->uri->segment(3);
-		$this->db->delete('tb_pengguna', ['id_pengguna' => $id]);
+		$this->Pengguna_model->deletePengguna($id);
 		redirect('admin/pengguna');
 	}
 }

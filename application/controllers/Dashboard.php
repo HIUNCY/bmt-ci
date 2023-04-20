@@ -11,17 +11,17 @@ class Dashboard extends CI_Controller
 		if ($this->session->userdata('level') == 'siswa') {
 			$nis = $this->session->userdata('nis');
 			$dataSiswa = [
-				'setor' => $this->db->query("SELECT SUM(setor) as Tsetor  from tb_tabungan where jenis='ST' AND nis=$nis")->row_array(),
-				'tarik' => $this->db->query("SELECT SUM(tarik) as Ttarik  from tb_tabungan where jenis='TR' AND nis=$nis")->row_array(),
-				'profil' => $this->db->get("tb_profil")->row_array()
+				'setor' => $this->Dashboard_model->getSetoranSiswa($nis),
+				'tarik' => $this->Dashboard_model->getPenarikanSiswa($nis),
+				'profil' => $this->Dashboard_model->getProfil(),
 			];
 			$this->load->view('home/homeSiswa', $dataSiswa);
 		} else {
 			$dataAdmin = [
-				'siswa' => $this->db->query("SELECT count(nis) as aktif from tb_siswa where status='Aktif'")->row_array(),
-				'setor' => $this->db->query("SELECT SUM(setor) as Tsetor  from tb_tabungan where jenis='ST'")->row_array(),
-				'tarik' => $this->db->query("SELECT SUM(tarik) as Ttarik  from tb_tabungan where jenis='TR'")->row_array(),
-				'profil' => $this->db->get("tb_profil")->row_array()
+				'siswa' => $this->Dashboard_model->getSiswa(),
+				'setor' => $this->Dashboard_model->getSetoran(),
+				'tarik' => $this->Dashboard_model->getPenarikan(),
+				'profil' => $this->Dashboard_model->getProfil(),
 			];
 			$this->load->view('home/homeAdmin', $dataAdmin);
 		}

@@ -47,7 +47,7 @@
 						<?php
 						$i = 1;
 
-						foreach ($dataSiswa->result_array() as $siswa) {
+						foreach ($dataSiswa as $siswa) {
 						?>
 							<tr>
 								<td>

@@ -57,7 +57,7 @@
 							<select name="id_kelas" id="id_kelas" class="form-control" required>
 								<option value="">-- Pilih --</option>
 								<?php
-								foreach ($dataKelas->result_array() as $kelas) {
+								foreach ($dataKelas as $kelas) {
 								?>
 									<option value="<?= $kelas['id_kelas'] ?>">
 										<?= $kelas['kelas'] ?>

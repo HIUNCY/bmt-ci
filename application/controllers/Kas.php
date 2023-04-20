@@ -17,8 +17,8 @@ class Kas extends CI_Controller
 		$tgl_1 = $this->input->post('tgl_1');
 		$tgl_2 = $this->input->post('tgl_2');
 		$data = [
-			'setor' => $this->db->query("SELECT SUM(setor) as Tsetor  from tb_tabungan where jenis='ST' and tgl BETWEEN '$tgl_1' AND '$tgl_2'")->row_array(),
-			'tarik' => $this->db->query("SELECT SUM(tarik) as Ttarik  from tb_tabungan where jenis='TR' and tgl BETWEEN '$tgl_1' AND '$tgl_2'")->row_array(),
+			'setor' => $this->Kas_model->getSetor($tgl_1, $tgl_2),
+			'tarik' => $this->Kas_model->getTarik($tgl_1, $tgl_2),
 		];
 
 		$this->load->view('templates/header');

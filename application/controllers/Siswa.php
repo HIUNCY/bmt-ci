@@ -6,9 +6,7 @@ class Siswa extends CI_Controller
 	public function index()
 	{
 		$data = [
-			'dataSiswa' => $this->db->query("SELECT s.nis, s.nama_siswa, s.jekel, s.status, s.th_masuk, k.kelas 
-			from tb_siswa s inner join tb_kelas k on s.id_kelas=k.id_kelas 
-			order by kelas asc, nis asc")
+			'dataSiswa' => $this->Siswa_model->getSiswa()
 		];
 
 		$this->load->view('templates/header');
@@ -21,7 +19,7 @@ class Siswa extends CI_Controller
 	public function tambahSiswa()
 	{
 		$data = [
-			'dataKelas' => $this->db->query("select * from tb_kelas")
+			'dataKelas' => $this->Siswa_model->getKelas()
 		];
 
 		$this->load->view('templates/header');
@@ -42,7 +40,7 @@ class Siswa extends CI_Controller
 			'th_masuk' => $this->input->post('th_masuk'),
 		];
 
-		$this->db->insert('tb_siswa', $data);
+		$this->Siswa_model->insertSiswa($data);
 		redirect('admin/siswa');
 	}
 
@@ -50,8 +48,8 @@ class Siswa extends CI_Controller
 	{
 		$nis = $this->uri->segment(3);
 		$data = [
-			'siswa' => $this->db->get_where('tb_siswa', ['nis' => $nis])->row_array(),
-			'dataKelas' => $this->db->get('tb_kelas'),
+			'siswa' => $this->Siswa_model->getDataSiswa($nis),
+			'dataKelas' => $this->Siswa_model->getKelas(),
 		];
 
 		$this->load->view('templates/header');
@@ -63,8 +61,8 @@ class Siswa extends CI_Controller
 
 	public function updateSiswa()
 	{
+		$nis = $this->input->post('nis');
 		$data = [
-			'nis' => $this->input->post('nis'),
 			'nama_siswa' => $this->input->post('nama_siswa'),
 			'jekel' => $this->input->post('jekel'),
 			'id_kelas' => $this->input->post('id_kelas'),
@@ -72,14 +70,14 @@ class Siswa extends CI_Controller
 			'th_masuk' => $this->input->post('th_masuk'),
 		];
 
-		$this->db->replace('tb_siswa', $data);
+		$this->Siswa_model->updateSiswa($nis, $data);
 		redirect('admin/siswa');
 	}
 
 	public function deleteSiswa()
 	{
 		$nis = $this->uri->segment(3);
-		$this->db->delete('tb_siswa', ['nis' => $nis]);
+		$this->Siswa_model->deleteSiswa($nis);
 		redirect('admin/siswa');
 	}
 }
