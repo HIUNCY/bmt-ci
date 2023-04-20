@@ -5,11 +5,17 @@ class Auth extends CI_Controller
 {
 	public function index()
 	{
+		if ($this->session->userdata('nama')) {
+			redirect(base_url($this->session->userdata('level')));
+		}
 		$this->load->view('login/loginStaff');
 	}
 
 	public function siswa()
 	{
+		if ($this->session->userdata('nama')) {
+			redirect(base_url($this->session->userdata('level')));
+		}
 		$this->load->view('login/loginSiswa');
 	}
 
@@ -52,7 +58,7 @@ class Auth extends CI_Controller
 
 	public function logout()
 	{
-		$this->session->sess_destroy();
+		$this->session->unset_userdata(['nama', 'nis', 'level']);
 		redirect('auth');
 	}
 }

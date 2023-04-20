@@ -3,6 +3,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Laporan extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		if (!$this->session->userdata('nama')) {
+			redirect('auth');
+		} elseif ($this->uri->segment(1) !== $this->session->userdata('level')) {
+			redirect(base_url($this->session->userdata('level')));
+		}
+	}
+
 	public function index()
 	{
 		$this->load->view('templates/header');
