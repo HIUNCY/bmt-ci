@@ -39,7 +39,7 @@ class Kelas extends CI_Controller
 	{
 		$data = ['kelas' => $this->input->post('kelas')];
 		$this->Kelas_model->insertKelas($data);
-		redirect('admin/kelas');
+		redirect($this->session->userdata('level') . '/kelas');
 	}
 
 	public function editKelas()
@@ -62,13 +62,13 @@ class Kelas extends CI_Controller
 		$data = ['kelas' => $this->input->post('kelas')];
 
 		$this->Kelas_model->updateKelas($id, $data);
-		redirect('admin/kelas');
+		redirect($this->session->userdata('level') . '/kelas');
 	}
 
 	public function deleteKelas()
 	{
 		$id = $this->uri->segment(3);
 		$this->Kelas_model->deleteKelas($id);
-		redirect('admin/kelas');
+		redirect($this->session->userdata('level') . '/kelas');
 	}
 }

@@ -50,6 +50,6 @@ class Profil extends CI_Controller
 		];
 
 		$this->Profil_model->updateProfil($id, $data);
-		redirect('admin/profil');
+		redirect($this->session->userdata('level') . '/profil');
 	}
 }

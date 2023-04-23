@@ -52,7 +52,7 @@ class Setoran extends CI_Controller
 		];
 
 		$this->Setoran_model->insertSetoran($data);
-		redirect('admin/setoran');
+		redirect($this->session->userdata('level') . '/setoran');
 	}
 
 	public function editSetoran()
@@ -81,6 +81,6 @@ class Setoran extends CI_Controller
 		];
 
 		$this->Setoran_model->updateSetoran($id, $data);
-		redirect('admin/setoran');
+		redirect($this->session->userdata('level') . '/setoran');
 	}
 }

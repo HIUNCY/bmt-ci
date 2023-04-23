@@ -52,7 +52,7 @@ class Penarikan extends CI_Controller
 		];
 
 		$this->Penarikan_model->insertPenarikan($data);
-		redirect('admin/penarikan');
+		redirect($this->session->userdata('level') . '/penarikan');
 	}
 
 	public function editPenarikan()
@@ -81,6 +81,6 @@ class Penarikan extends CI_Controller
 		];
 
 		$this->Penarikan_model->updatePenarikan($id, $data);
-		redirect('admin/penarikan');
+		redirect($this->session->userdata('level') . '/penarikan');
 	}
 }

@@ -45,7 +45,7 @@ class Pengguna extends CI_Controller
 		];
 
 		$this->Pengguna_model->insertPengguna($data);
-		redirect('admin/pengguna');
+		redirect($this->session->userdata('level') . '/pengguna');
 	}
 
 	public function editPengguna()
@@ -74,13 +74,13 @@ class Pengguna extends CI_Controller
 		];
 
 		$this->Pengguna_model->updatePengguna($id, $data);
-		redirect('admin/pengguna');
+		redirect($this->session->userdata('level') . '/pengguna');
 	}
 
 	public function deletePengguna()
 	{
 		$id = $this->uri->segment(3);
 		$this->Pengguna_model->deletePengguna($id);
-		redirect('admin/pengguna');
+		redirect($this->session->userdata('level') . '/pengguna');
 	}
 }
