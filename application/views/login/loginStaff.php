@@ -30,6 +30,7 @@
 				Login Admin dan Staff
 				<i class="fa fa-user-shield"></i>
 			</p>
+			<?= $this->session->flashdata('note') ?>
 
 			<form action="<?= base_url('auth/cekLoginAdmin') ?>" method="post">
 				<div class="form-group has-feedback">

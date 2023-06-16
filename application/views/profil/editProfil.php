@@ -76,15 +76,3 @@
 			</div>
 			<!-- /.box -->
 </section>
-
-<?php
-
-if (isset($_POST['Ubah'])) {
-	//mulai proses ubah
-	$sql_ubah = "UPDATE tb_profil SET
-        nama_sekolah='" . $_POST['nama_sekolah'] . "',
-        alamat='" . $_POST['alamat'] . "',
-        akreditasi='" . $_POST['akreditasi'] . "'
-        WHERE id_profil='" . $_POST['id_profil'] . "'";
-	$query_ubah = mysqli_query($koneksi, $sql_ubah);
-}

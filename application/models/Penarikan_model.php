@@ -41,4 +41,16 @@ class Penarikan_model extends CI_Model
 		$this->db->where('id_tabungan', $id);
 		$this->db->update('tb_tabungan', $data);
 	}
+
+	public function getJumlahSetor($nis)
+	{
+		$query = $this->db->query("SELECT SUM(setor) AS Tsetor FROM tb_tabungan WHERE jenis='ST' AND nis=$nis");
+		return $query->row_array();
+	}
+
+	public function getJumlahTarik($nis)
+	{
+		$query = $this->db->query("SELECT SUM(tarik) as Ttarik  from tb_tabungan where jenis='TR' AND nis=$nis");
+		return $query->row_array();
+	}
 }

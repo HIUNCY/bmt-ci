@@ -70,7 +70,7 @@
 
 						<?php
 						$i = 1;
-						foreach ($dataTabungan->result_array() as $tabungan) {
+						foreach ($dataTabungan as $tabungan) {
 						?>
 
 							<tr>

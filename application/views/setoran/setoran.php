@@ -73,7 +73,7 @@
 								</td>
 								<td>
 									<?php $tgl = $setor['tgl'];
-									echo date("d/M/Y", strtotime($tgl)) ?>
+									echo date("d F Y", strtotime($tgl)) ?>
 								</td>
 								<td align="right">
 									<?php echo rupiah($setor['setor']); ?>

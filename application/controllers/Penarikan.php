@@ -42,17 +42,28 @@ class Penarikan extends CI_Controller
 
 	public function createPenarikan()
 	{
-		$data = [
-			'nis' => $this->input->post('nis'),
-			'setor' => '0',
-			'tarik' => preg_replace("/[^0-9]/", "", $this->input->post('tarik')),
-			'tgl' => date("Y-m-d"),
-			'jenis' => 'TR',
-			'petugas' => $this->session->userdata('nama')
-		];
+		$nis = $this->input->post('nis');
+		$tarik = preg_replace("/[^0-9]/", "", $this->input->post('tarik'));
+		$jumlahSetor = $this->Penarikan_model->getJumlahSetor($nis);
+		$jumlahTarik = $this->Penarikan_model->getJumlahTarik($nis);
+		$jumlahTabungan = $jumlahSetor['Tsetor'] - $jumlahTarik['Ttarik'];
 
-		$this->Penarikan_model->insertPenarikan($data);
-		redirect($this->session->userdata('level') . '/penarikan');
+		if ($jumlahTabungan - $tarik >= 0) {
+			$data = [
+				'nis' => $nis,
+				'setor' => '0',
+				'tarik' => $tarik,
+				'tgl' => date("Y-m-d"),
+				'jenis' => 'TR',
+				'petugas' => $this->session->userdata('nama')
+			];
+
+			$this->Penarikan_model->insertPenarikan($data);
+			redirect($this->session->userdata('level') . '/penarikan');
+		} elseif ($jumlahTabungan - $tarik < 0) {
+			$this->session->set_flashdata('note', '<div class="alert alert-danger alert-message" role="alert">Penarikan Melebihi Jumlah Tabungan!</div>');
+			redirect($this->session->userdata('level') . '/tambah-penarikan');
+		}
 	}
 
 	public function editPenarikan()

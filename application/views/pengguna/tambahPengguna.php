@@ -34,22 +34,22 @@
 					<div class="box-body">
 						<div class="form-group">
 							<label for="exampleInputEmail1">Nama Pengguna</label>
-							<input type="text" name="nama_pengguna" id="nama_pengguna" class="form-control" placeholder="Nama pengguna">
+							<input type="text" name="nama_pengguna" id="nama_pengguna" class="form-control" placeholder="Nama pengguna" required>
 						</div>
 
 						<div class="form-group">
 							<label for="exampleInputEmail1">Username</label>
-							<input type="text" name="username" id="username" class="form-control" placeholder="Username">
+							<input type="text" name="username" id="username" class="form-control" placeholder="Username" required>
 						</div>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">Password</label>
-							<input type="password" name="password" id="password" class="form-control" placeholder="Password">
+							<input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
 						</div>
 
 						<div class="form-group">
 							<label>Level</label>
-							<select name="level" id="level" class="form-control">
+							<select name="level" id="level" class="form-control" required>
 								<option selected disabled>-- Pilih Level --</option>
 								<option>Administrator</option>
 								<option>Petugas</option>

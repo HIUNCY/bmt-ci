@@ -35,12 +35,12 @@
 					<div class="box-body">
 						<div class="form-group">
 							<label>NIS</label>
-							<input type="text" name="nis" id="nis" class="form-control" placeholder="NIS">
+							<input type="text" name="nis" id="nis" class="form-control" placeholder="NIS" required>
 						</div>
 
 						<div class="form-group">
 							<label>Nama Siswa</label>
-							<input type="text" name="nama_siswa" id="nama_siswa" class="form-control" placeholder="Nama Siswa">
+							<input type="text" name="nama_siswa" id="nama_siswa" class="form-control" placeholder="Nama Siswa" required>
 						</div>
 
 						<div class="form-group">
@@ -70,7 +70,7 @@
 
 						<div class="form-group">
 							<label>Tahun Masuk</label>
-							<input type="number" name="th_masuk" id="th_masuk" class="form-control" placeholder="Th Masuk">
+							<input type="number" name="th_masuk" id="th_masuk" class="form-control" placeholder="Th Masuk" required>
 						</div>
 
 					</div>

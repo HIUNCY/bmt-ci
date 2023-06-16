@@ -35,7 +35,7 @@
 					<div class="box-body">
 						<div class="form-group">
 							<label>Kelas</label>
-							<input type="text" name="kelas" id="kelas" class="form-control" placeholder="Kelas">
+							<input type="text" name="kelas" id="kelas" class="form-control" placeholder="Kelas" required>
 						</div>
 
 					</div>

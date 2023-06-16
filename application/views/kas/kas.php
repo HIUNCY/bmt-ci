@@ -37,12 +37,12 @@
 
 						<div class="form-group">
 							<label>Tanggal Awal</label>
-							<input type="date" name="tgl_1" id="tgl_1" class="form-control">
+							<input type="date" name="tgl_1" id="tgl_1" class="form-control" required>
 						</div>
 
 						<div class="form-group">
 							<label>Tanggal Akhir</label>
-							<input type="date" name="tgl_2" id="tgl_2" class="form-control">
+							<input type="date" name="tgl_2" id="tgl_2" class="form-control" required>
 						</div>
 
 					</div>

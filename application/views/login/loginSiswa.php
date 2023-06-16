@@ -26,6 +26,7 @@
 		<!-- /.login-logo -->
 		<div class="login-box-body">
 			<p class="login-box-msg"><b>Login Siswa</b></p>
+			<?= $this->session->flashdata('note') ?>
 
 			<form action="<?= base_url('auth/cekLoginSiswa') ?>" method="post">
 				<div class="form-group has-feedback">
@@ -39,6 +40,9 @@
 				<button type="submit" class="btn btn-primary btn-block" name="btnLogin" title="Masuk Sistem">
 					<b>Masuk</b>
 				</button>
+				<div class="text-center" style="margin-top: 10px;">
+					<a href="<?= base_url('auth') ?>"><b>Login Staff</b></a>
+				</div>
 			</form>
 			<!-- /.social-auth-links -->
 

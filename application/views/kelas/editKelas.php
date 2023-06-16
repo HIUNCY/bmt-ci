@@ -37,7 +37,7 @@
 
 						<div class="form-group">
 							<label>Kelas</label>
-							<input class="form-control" name="kelas" value="<?= $kelas['kelas']; ?>" />
+							<input class="form-control" name="kelas" value="<?= $kelas['kelas']; ?>" required />
 						</div>
 
 					</div>

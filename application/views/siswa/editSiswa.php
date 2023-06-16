@@ -41,7 +41,7 @@
 
 						<div class="form-group">
 							<label>Nama siswa</label>
-							<input class="form-control" name="nama_siswa" value="<?= $siswa['nama_siswa']; ?>" />
+							<input class="form-control" name="nama_siswa" value="<?= $siswa['nama_siswa']; ?>" required />
 						</div>
 
 						<div class="form-group">
@@ -77,7 +77,7 @@
 
 						<div class="form-group">
 							<label>Th Masuk</label>
-							<input class="form-control" name="th_masuk" value="<?= $siswa['th_masuk']; ?>">
+							<input class="form-control" name="th_masuk" value="<?= $siswa['th_masuk']; ?>" required>
 						</div>
 
 						<div class="form-group">

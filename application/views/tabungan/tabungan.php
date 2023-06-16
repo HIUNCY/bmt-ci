@@ -37,7 +37,7 @@
 
 						<div class="form-group">
 							<label>Siswa</label>
-							<select name="nis" id="nis" class="form-control select2" style="width: 100%;">
+							<select name="nis" id="nis" class="form-control select2" style="width: 100%;" required>
 								<option selected="selected">-- Pilih --</option>
 								<?php
 								foreach ($dataSiswa as $siswa) {
@@ -50,7 +50,7 @@
 								<?php
 								}
 								?>
-							</select required>
+							</select>
 						</div>
 
 						<div class="form-group">

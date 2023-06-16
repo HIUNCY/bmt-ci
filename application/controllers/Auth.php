@@ -36,6 +36,7 @@ class Auth extends CI_Controller
 				redirect('staff');
 			}
 		} else {
+			$this->session->set_flashdata('note', '<div class="alert alert-danger alert-message" role="alert">Username atau password salah!</div>');
 			redirect('/');
 		}
 	}
@@ -52,13 +53,15 @@ class Auth extends CI_Controller
 			$this->session->set_userdata(["level" => 'siswa']);
 			redirect('siswa');
 		} else {
-			redirect('auth/siswa');
+			$this->session->set_flashdata('note', '<div class="alert alert-danger alert-message" role="alert">Username atau password salah!</div>');
+			redirect('auth/login-siswa');
 		}
 	}
 
 	public function logout()
 	{
 		$this->session->unset_userdata(['nama', 'nis', 'level']);
+		$this->session->set_flashdata('note', '<div class="alert alert-danger alert-message" role="alert">Anda sudah logout!</div>');
 		redirect('auth');
 	}
 }

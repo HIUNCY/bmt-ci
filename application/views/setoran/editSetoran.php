@@ -40,7 +40,7 @@
 
 						<div class="form-group">
 							<label>Siswa</label>
-							<select name="nis" id="nis" class="form-control select2" style="width: 100%; ">
+							<select name="nis" id="nis" class="form-control select2" style="width: 100%;" required>
 								<option selected="">-- Pilih --</option>
 								<?php
 								foreach ($dataSiswa as $siswa) {
@@ -56,7 +56,7 @@
 
 						<div class="form-group">
 							<label>Setoran</label>
-							<input type="text" class="form-control" id="setor" name="setor" value="Rp <?= number_format(($setoran['setor']), 0, '', '.') ?>" />
+							<input type="text" class="form-control" id="setor" name="setor" value="Rp <?= number_format(($setoran['setor']), 0, '', '.') ?>" required />
 						</div>
 
 					</div>
@@ -70,44 +70,6 @@
 			</div>
 			<!-- /.box -->
 </section>
-
-<?php
-
-if (isset($_POST['Ubah'])) {
-
-	//menangkap post setor
-	$setor = $_POST['setor'];
-	//membuang Rp dan Titik
-	$setor_hasil = preg_replace("/[^0-9]/", "", $setor);
-
-	$sql_ubah = "UPDATE tb_tabungan SET
-            nis='" . $_POST['nis'] . "',
-            setor='" . $setor_hasil . "',
-            tgl='" . $tanggal . "'
-            WHERE id_tabungan='" . $_POST['id_tabungan'] . "'";
-	$query_ubah = mysqli_query($koneksi, $sql_ubah);
-	mysqli_close($koneksi);
-
-	if ($query_ubah) {
-		echo "<script>
-        Swal.fire({title: 'Ubah Data Berhasil',text: '',icon: 'success',confirmButtonText: 'OK'
-        }).then((result) => {
-            if (result.value) {
-                window.location = 'index.php?page=data_setor';
-            }
-        })</script>";
-	} else {
-		echo "<script>
-        Swal.fire({title: 'Ubah Data Gagal',text: '',icon: 'error',confirmButtonText: 'OK'
-        }).then((result) => {
-            if (result.value) {
-                window.location = 'index.php?page=data_setor';
-            }
-        })</script>";
-	}
-}
-
-?>
 
 <script type="text/javascript">
 	var setor = document.getElementById('setor');
