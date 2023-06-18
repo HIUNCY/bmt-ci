@@ -43,7 +43,7 @@
 
 					<div class="box-footer">
 						<input type="submit" name="Simpan" value="Simpan" class="btn btn-info">
-						<a href="?page=MyApp/data_kelas" class="btn btn-warning">Batal</a>
+						<a href="<?= base_url($this->session->userdata('level') . '/kelas') ?>" class="btn btn-warning">Batal</a>
 					</div>
 				</form>
 			</div>

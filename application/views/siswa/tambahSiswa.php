@@ -46,16 +46,16 @@
 						<div class="form-group">
 							<label>Jenis Kelamin</label>
 							<select name="jekel" id="jekel" class="form-control" required>
-								<option>-- Pilih --</option>
-								<option>LK</option>
-								<option>PR</option>
+								<option selected disabled>-- Pilih --</option>
+								<option value="LK">Laki-Laki</option>
+								<option value="PR">Perempuan</option>
 							</select>
 						</div>
 
 						<div class="form-group">
 							<label>Kelas</label>
 							<select name="id_kelas" id="id_kelas" class="form-control" required>
-								<option value="">-- Pilih --</option>
+								<option value="" selected disabled>-- Pilih --</option>
 								<?php
 								foreach ($dataKelas as $kelas) {
 								?>

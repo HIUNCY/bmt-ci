@@ -53,7 +53,6 @@
 							<th>Tanggal</th>
 							<th>Tarikan</th>
 							<th>Petugas</th>
-							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -80,11 +79,6 @@
 								</td>
 								<td>
 									<?php echo $tarik['petugas']; ?>
-								</td>
-								<td>
-									<a href="<?= base_url($this->session->userdata('level') . '/edit-penarikan/') . $tarik['id_tabungan'] ?>" title="Ubah" class="btn btn-success btn-sm">
-										<i class="glyphicon glyphicon-edit"> Edit</i>
-									</a>
 								</td>
 							</tr>
 						<?php

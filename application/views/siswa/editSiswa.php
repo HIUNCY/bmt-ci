@@ -47,13 +47,13 @@
 						<div class="form-group">
 							<label>Jenis Kelamin</label>
 							<select name="jekel" id="jekel" class="form-control" required>
-								<option value="">-- Pilih --</option>
+								<option value="" disabled>-- Pilih --</option>
 								<?php
 								//cek data yg dipilih sebelumnya
-								if ($siswa['jekel'] == "LK") echo "<option value='LK' selected>LK</option>";
+								if ($siswa['jekel'] == "LK") echo "<option value='LK' selected>Laki-Laki</option>";
 								else echo "<option value='LK'>LK</option>";
 
-								if ($siswa['jekel'] == "PR") echo "<option value='PR' selected>PR</option>";
+								if ($siswa['jekel'] == "PR") echo "<option value='PR' selected>Perempuan</option>";
 								else echo "<option value='PR'>PR</option>";
 								?>
 							</select>
@@ -62,7 +62,7 @@
 						<div class="form-group">
 							<label>Kelas</label>
 							<select name="id_kelas" id="id_kelas" class="form-control" required>
-								<option value="">-- Pilih --</option>
+								<option value="" disabled>-- Pilih --</option>
 								<?php
 								foreach ($dataKelas as $kelas) {
 								?>
@@ -83,7 +83,7 @@
 						<div class="form-group">
 							<label>Status</label>
 							<select name="status" id="status" class="form-control" required>
-								<option value="">-- Pilih --</option>
+								<option value="" disabled>-- Pilih --</option>
 								<?php
 								//cek data yg dipilih sebelumnya
 								if ($siswa['status'] == "Aktif") echo "<option value='Aktif' selected>Aktif</option>";

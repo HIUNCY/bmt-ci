@@ -51,7 +51,7 @@ class Siswa extends CI_Controller
 		];
 
 		$this->Siswa_model->insertSiswa($data);
-		redirect($this->session->userdata('level') . 'admin/siswa');
+		redirect($this->session->userdata('level') . '/siswa');
 	}
 
 	public function editSiswa()
@@ -81,13 +81,13 @@ class Siswa extends CI_Controller
 		];
 
 		$this->Siswa_model->updateSiswa($nis, $data);
-		redirect($this->session->userdata('level') . 'admin/siswa');
+		redirect($this->session->userdata('level') . '/siswa');
 	}
 
 	public function deleteSiswa()
 	{
 		$nis = $this->uri->segment(3);
 		$this->Siswa_model->deleteSiswa($nis);
-		redirect($this->session->userdata('level') . 'admin/siswa');
+		redirect($this->session->userdata('level') . '/siswa');
 	}
 }

@@ -36,7 +36,7 @@
 							<th>No</th>
 							<th>NIS</th>
 							<th>Nama</th>
-							<th>JK</th>
+							<th>Jenis Kelamin</th>
 							<th>Kelas</th>
 							<th>Status</th>
 							<th>Th Masuk</th>
@@ -60,7 +60,13 @@
 									<?= $siswa['nama_siswa']; ?>
 								</td>
 								<td>
-									<?= $siswa['jekel']; ?>
+									<?php
+									if ($siswa['jekel'] == 'LK') {
+										echo 'Laki-Laki';
+									} else {
+										echo 'Perempuan';
+									}
+									?>
 								</td>
 								<td>
 									<?= $siswa['kelas']; ?>

@@ -80,18 +80,4 @@ class Penarikan extends CI_Controller
 		$this->load->view('penarikan/editPenarikan', $data);
 		$this->load->view('templates/footer');
 	}
-
-	public function updatePenarikan()
-	{
-		$id = $this->input->post('id_tabungan');
-		$data = [
-			'nis' => $this->input->post('nis'),
-			'tarik' => preg_replace("/[^0-9]/", "", $this->input->post('tarik')),
-			'tgl' => date("Y-m-d"),
-			'petugas' => $this->session->userdata('nama')
-		];
-
-		$this->Penarikan_model->updatePenarikan($id, $data);
-		redirect($this->session->userdata('level') . '/penarikan');
-	}
 }
