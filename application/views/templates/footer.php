@@ -3,7 +3,7 @@
 </div>
 <footer class="main-footer">
 	<div class="text-center">
-		Copyright &copy; 2023 &bull; Tugas Kelompok Web Programming III <br> Muhamad Zainul Kamal &bull; Rahmat Arayyan &bull; Hilal Alfadila &bull; Masda Samosir
+		Copyright &copy; 2023 &bull; Tugas Web Programming III <br>&bull; Muhamad Zainul Kamal &bull;
 	</div>
 </footer>
 <div class="control-sidebar-bg"></div>
