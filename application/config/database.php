@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => 'autorack.proxy.rlwy.net:56977',
 	'username' => 'root',
-	'password' => '',
+	'password' => 'WyOuRPHnvSHOlRMmbRhzESwdWHCuPYVm',
 	'database' => 'bmt',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
