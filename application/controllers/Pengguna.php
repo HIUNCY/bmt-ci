@@ -40,7 +40,7 @@ class Pengguna extends CI_Controller
 		$data = [
 			'nama_pengguna' => $this->input->post('nama_pengguna'),
 			'username' => $this->input->post('username'),
-			'password' => $this->input->post('password'),
+			'password' => hash('sha256', $this->input->post('password')),
 			'level' => $this->input->post('level'),
 		];
 

@@ -22,10 +22,10 @@ class Auth extends CI_Controller
 	public function cekLoginAdmin()
 	{
 		$username = htmlspecialchars($this->input->post('username'));
-		$password = $this->input->post('password');
+		$password = hash('sha256', $this->input->post('password'));
 
 		$user = $this->db->get_where('tb_pengguna', ['username' => $username])->row_array();
-		if ($user != null && $user['password'] == $password) {
+		if ($user != null && $password == $user['password']) {
 			if ($user['level'] == "Administrator") {
 				$this->session->set_userdata(["nama" => $user["nama_pengguna"]]);
 				$this->session->set_userdata(["level" => 'admin']);
